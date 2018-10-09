@@ -343,7 +343,7 @@ function createThumbnail( rawThumbnail ) {
 		x, y, width, height, clipPath,
 		devicePixelRatio = $.bracketedDevicePixelRatio();
 
-	if ( !rawThumbnail ) {
+	if ( !rawThumbnail || '[]' == JSON.stringify(rawThumbnail) ) {
 		return null;
 	}
 

@@ -3475,6 +3475,7 @@ function render( model ) {
  * @return {ext.popups.Preview}
  */
 function createPreview( model ) {
+	
 	var templateData,
 		thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
@@ -3690,9 +3691,10 @@ function createThumbnail( rawThumbnail ) {
 		x, y, width, height, clipPath,
 		devicePixelRatio = $.bracketedDevicePixelRatio();
 
-	if ( !rawThumbnail ) {
+	if ( !rawThumbnail || '[]' == JSON.stringify(rawThumbnail) ) {
 		return null;
 	}
+	
 
 	tall = rawThumbnail.width < rawThumbnail.height;
 	thumbWidth = rawThumbnail.width / devicePixelRatio;
